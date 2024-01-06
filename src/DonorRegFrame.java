@@ -217,6 +217,31 @@
 //
 //    
 //}
+//public class DonarRegPage
+//    {
+//        public static void main(String args[])
+//        {
+//            DonorRegFrame frame=new DonorRegFrame();
+//
+//         frame.setTitle("Donar info");
+//        frame.setVisible(true);
+//        frame.setBounds(100, 100, 570, 800);
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.setResizable(false);
+//
+//
+//            
+//        }
+//
+//		public void setVisible(boolean b) {
+//			// TODO Auto-generated method stub
+//			
+//		}
+//
+//		
+//    }
+
+
 
 
 
@@ -370,9 +395,27 @@ public class DonorRegFrame extends JPanel implements ActionListener {
             clearFields();
         }
 
+//        if (e.getSource() == backButton) {
+//        	  JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(donorPanel);
+//        	    if (parentFrame != null) {
+//        	        HomePageGUI homePage = new HomePageGUI();
+//        	        parentFrame.setContentPane(homePage.getContentPane());
+//        	        parentFrame.validate();
+//        	        parentFrame.repaint();
+//        	    }
+//        }
+        
         if (e.getSource() == backButton) {
-        	
+            JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(donorPanel);
+            if (parentFrame != null && parentFrame instanceof HomePageGUI) {
+                HomePageGUI homePage = (HomePageGUI) parentFrame;
+                parentFrame.setContentPane(homePage.getHomePanel());
+                parentFrame.validate();
+                parentFrame.repaint();
+            }
         }
+
+        
     }
     
     
@@ -399,3 +442,4 @@ public class DonorRegFrame extends JPanel implements ActionListener {
         frame.setVisible(true);
     }
 }
+

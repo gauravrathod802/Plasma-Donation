@@ -205,15 +205,6 @@ class Login extends JPanel {
                     ResultSet rs = st.executeQuery(r);
                     if (rs.next()) {
                         System.out.println("Login Successfully!");
-
-
-                        // Update the content pane and repaint the main frame
-//                        mainFrame.getContentPane().removeAll();
-//                        mainFrame.getContentPane().add(cardPanel);
-//                        mainFrame.revalidate();
-//                        mainFrame.repaint();
-//                        cardLayout.show(cardPanel, "homePage");
-
                         HomePageGUI homePage = new HomePageGUI();
                         homePage.setVisible(true);
 

@@ -80,104 +80,6 @@
 
 
 
-
-
-//
-//import javax.swing.*;
-//import java.awt.*;
-//import java.awt.event.ActionEvent;
-//import java.awt.event.ActionListener;
-//
-//public class HomePageGUI extends JFrame {
-//
-//    private JPanel contentPane;
-//    private JButton donorButton;
-//    private JButton displayButton;
-//
-//    private DonorRegFrame donorRegFrame;
-//    private DisplayData displayData;
-//
-//    public HomePageGUI() {
-//        initialize();
-//    }
-//
-//    private void initialize() {
-//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        setBounds(100, 100, 800, 600);
-//
-//        contentPane = new JPanel();
-//        contentPane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-//        setContentPane(contentPane);
-//        contentPane.setLayout(new BorderLayout(0, 0));
-//
-//        donorButton = new JButton("Donor Registration");
-//        donorButton.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                showDonorFrame();
-//            }
-//        });
-//        contentPane.add(donorButton, BorderLayout.WEST);
-//
-//        displayButton = new JButton("Display Data");
-//        displayButton.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                showDisplayFrame();
-//            }
-//        });
-//        contentPane.add(displayButton, BorderLayout.EAST);
-//    }
-//
-//    private void showDonorFrame() {
-//        if (donorRegFrame == null) {
-//            donorRegFrame = new DonorRegFrame();
-//        }
-//        setContentPane(donorRegFrame.getDonorPanel());
-//        validate();
-//        repaint();
-//    }
-//
-//    private void showDisplayFrame() {
-//        if (displayData == null) {
-//            displayData = new DisplayData();
-//        }
-//        setContentPane(displayData);
-//        validate();
-//        repaint();
-//        displayData.showTableData(); // Refresh data when displaying
-//    }
-//
-//    public static void main(String[] args) {
-//        EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                try {
-//                    HomePageGUI frame = new HomePageGUI();
-//                    frame.setVisible(true);
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
-//    }
-//}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -239,14 +141,25 @@ public class HomePageGUI extends JFrame {
         repaint();
     }
 
-    private void showDisplayFrame() {
-        if (displayData == null) {
-            displayData = new DisplayData();
-        }
-        setContentPane(displayData.getContentPane());  // Assuming you have a getContentPane() method
-        validate();
-        repaint();
-        displayData.showTableData(); // Refresh data when displaying
+//    private void showDisplayFrame() {
+//        if (displayData == null) {
+//            displayData = new DisplayData();
+//        }
+//        setContentPane(displayData.getContentPane());  // Assuming you have a getContentPane() method
+//        validate();
+//        repaint();
+//        displayData.showTableData(); // Refresh data when displaying
+//    }
+  private void showDisplayFrame() {
+	 if (displayData == null) {
+        displayData = new DisplayData(this);
+    }
+    displayData.setVisible(true);  // Show the DisplayData frame
+    this.setVisible(false);  // Hide the current frame// Refresh data when displaying
+}
+    
+    public JPanel getHomePanel() {
+        return contentPane;
     }
 
     public static void main(String[] args) {
@@ -265,6 +178,42 @@ public class HomePageGUI extends JFrame {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//import javax.swing.*;
+//import java.awt.*;
+//import java.awt.event.ActionEvent;
+//import java.awt.event.ActionListener;
 //
 //public class HomePageGUI extends JFrame {
 //
@@ -284,15 +233,15 @@ public class HomePageGUI extends JFrame {
 //        setBounds(100, 100, 800, 800);
 //
 //        contentPane = new JPanel();
-//        contentPane.setBackground(new Color(255, 223, 186));
+//        contentPane.setBackground(new Color(255, 223, 186)); // Light orange background
 //        contentPane.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 //        setContentPane(contentPane);
-//        contentPane.setLayout(new CardLayout());
+//        contentPane.setLayout(new GridLayout(3, 1, 20, 20));
 //
 //        JLabel titleLabel = new JLabel("PLASMA DONATION");
 //        titleLabel.setFont(new Font("Verdana", Font.PLAIN, 28));
 //        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
-//        contentPane.add(titleLabel, "homePage");
+//        contentPane.add(titleLabel);
 //
 //        donorButton = new JButton("Donor Registration");
 //        donorButton.setFont(new Font("Verdana", Font.PLAIN, 18));
@@ -301,7 +250,7 @@ public class HomePageGUI extends JFrame {
 //                showDonorFrame();
 //            }
 //        });
-//        contentPane.add(donorButton, "donorPanel");
+//        contentPane.add(donorButton);
 //
 //        displayButton = new JButton("Display Data");
 //        displayButton.setFont(new Font("Verdana", Font.PLAIN, 18));
@@ -310,24 +259,25 @@ public class HomePageGUI extends JFrame {
 //                showDisplayFrame();
 //            }
 //        });
-//        contentPane.add(displayButton, "displayPanel");
+//        contentPane.add(displayButton);
 //    }
 //
 //    private void showDonorFrame() {
-//        if (donorRegFrame == null) {
-//            donorRegFrame = new DonorRegFrame();
+//        System.out.println("showDonorFrame method called");
+//
+//    	if (donorRegFrame == null) {
+//            donorRegFrame = new DonorRegFrame(this);
 //        }
-//        contentPane.add(donorRegFrame.getDonorPanel(), "donorPanel");
-//        ((CardLayout) contentPane.getLayout()).show(contentPane, "donorPanel");
+//        donorRegFrame.setVisible(true);  // Show the DonorRegFrame
+////        this.setVisible(false);  // Hide the current frame
 //    }
 //
 //    private void showDisplayFrame() {
-//        if (displayData == null) {
-//            displayData = new DisplayData();
-//        }
-//        contentPane.add(displayData.getContentPane(), "displayPanel");
-//        ((CardLayout) contentPane.getLayout()).show(contentPane, "displayPanel");
-//        displayData.showTableData();
+//    	 if (displayData == null) {
+//             displayData = new DisplayData(this);
+//         }
+//         displayData.setVisible(true);  // Show the DisplayData frame
+//         this.setVisible(false);  // Hide the current frame// Refresh data when displaying
 //    }
 //
 //    public static void main(String[] args) {
@@ -343,3 +293,9 @@ public class HomePageGUI extends JFrame {
 //        });
 //    }
 //}
+//
+//
+
+
+
+
